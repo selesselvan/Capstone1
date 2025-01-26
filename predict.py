@@ -15,7 +15,7 @@ with open(model_filename, 'rb') as file:
 aqi_category_mapping = {
     0: "Good",
     1: "Moderate",
-    2: "Unhealthy for Sensitive Groups",
+    2: "Unhealthy for Sensitive Groups", 
     3: "Unhealthy",
     4: "Very Unhealthy",
     5: "Hazardous"
@@ -23,29 +23,34 @@ aqi_category_mapping = {
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json
+    try:
+        data = request.json
+        
+        
+        input_features = [
+            int(data['Country']),           # Country code
+            int(data['City']),              # City 
+            float(data['AQI_Value']),       # AQI Value
+            float(data['CO_AQI_Value']),    # CO AQI Value
+            int(data['CO_AQI_Category']),   # CO AQI Category
+            float(data['Ozone_AQI_Value']), # Ozone AQI Value
+            int(data['Ozone_AQI_Category']),# Ozone AQI Category
+            float(data['NO2_AQI_Value']),   # NO2 AQI Value
+            int(data['NO2_AQI_Category']),  # NO2 AQI Category
+            float(data['PM2.5_AQI_Value']), # PM2.5 AQI Value
+            int(data['PM2.5_AQI_Category']) # PM2.5 AQI Category
+        ]
+        
+        # Make prediction
+        prediction = model.predict([input_features])
+        
+        # Convert prediction to category label
+        predicted_label = aqi_category_mapping[prediction[0]]
+        
+        return jsonify({'prediction': predicted_label})
     
-    input_features = [
-        data['Country'],
-        data['City'],
-        data['AQI_Value'],
-        data['CO_AQI_Value'],
-        data['CO_AQI_Category'],
-        data['Ozone_AQI_Value'],
-        data['Ozone_AQI_Category'],
-        data['NO2_AQI_Value'],
-        data['NO2_AQI_Category'],
-        data['PM2.5_AQI_Value'],
-        data['PM2.5_AQI_Category']
-    ]
-
-    # Make prediction
-    prediction = model.predict([input_features])
-
-    # Convert numerical prediction to string label
-    predicted_label = aqi_category_mapping[prediction[0]]
-
-    return jsonify({'prediction': predicted_label})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=9696)
