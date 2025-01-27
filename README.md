@@ -117,7 +117,7 @@ Open another terminal window and run the Streamlit application[Ensure the Flask 
 
 # Cloud Deployment
 * Ongoing
-* but a video (Predict aqi video) of the local interaction with the deployed service is attached to the repo.
+* but a video (Predict aqi video.mov) of the local interaction with the deployed service is attached to the repo.
 
 ## References:
 
