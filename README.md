@@ -9,10 +9,10 @@ For this capstone project, a dataset from Kaggle [^2], originally collected from
 # About Dataset
 
 ## Dataset Overview:
-The Global Air Pollution Dataset contains 23,463 rows and 12 columns, offering a detailed collection of air quality data from diverse locations worldwide [^2].
+The Global Air Pollution Dataset contains 23,463 rows and 12 columns, offering a detailed collection of air quality data from diverse locations worldwide.
 
 ## Key Features of the Dataset:
-This dataset provides geolocated information about the following pollutants:
+This dataset provides geolocated information about the following pollutants [^2]:
 
 - Nitrogen Dioxide [NO2]: Nitrogen Dioxide is one of the several nitrogen oxides. It is introduced into the air by natural phenomena like entry from the stratosphere or lighting. At the surface level, however, NO2 forms from cars, trucks and buses emissions, power plants and off-road equipment. Exposure over short periods can aggravate respiratory diseases like asthma. Longer exposures may contribute to the development of asthma and respiratory infections. People with asthma, children and the elderly are at greater risk for the health effects of NO2.
 
