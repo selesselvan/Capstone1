@@ -116,8 +116,8 @@ Open another terminal window and run the Streamlit application[Ensure the Flask 
 * Runs both the Flask app (predict.py) and the Streamlit app (app.py) when the container starts.
 
 # Cloud Deployment
-* Ongoing
-* but a video (Predict aqi video.mov) of the local interaction with the deployed service is attached to the repo.
+
+On-going. A short video (Predict aqi video.mov) demonstrating interaction with the local deployment is attached to this repo.
 
 ## References:
 
