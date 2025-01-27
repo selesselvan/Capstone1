@@ -2,9 +2,6 @@ import streamlit as st
 import requests
 import pickle
 
-country_mapping = None
-city_mapping = None
-
 
 # Load country mapping
 with open('country_mapping.pkl', 'rb') as f:
@@ -52,7 +49,53 @@ pm25_aqi = list(pm25_aqi_category_mapping.keys())
 
 
 
-st.title('AQI Prediction Dashboard')
+# Page Configuration
+st.set_page_config(
+    page_title="AQI Prediction Dashboard",  
+    layout="wide"
+)
+
+# Custom CSS for styling
+st.markdown("""
+    <style>
+    .big-font {
+        font-size:20px !important;
+        color: #4a4a4a;
+    }
+    .highlight {
+        background-color: #f0f2f6;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Title
+st.title('Air Quality Index (AQI) Prediction Dashboard')
+
+# Informative Expander
+with st.expander("What is Air Quality Index (AQI)?"):
+    st.markdown("""
+    
+    The AQI is a critical tool used to communicate how polluted the air currently is or how polluted it is forecast to become. 
+    
+    #### Key Features:
+    - **Measure of Air Pollution**: Provides a standardized indicator of air quality
+    - **Key Pollutants Tracked**:
+        - Particulate Matter (PM2.5)
+        - Ozone (O₃)
+        - Carbon Monoxide (CO)
+        - Nitrogen Dioxide (NO₂)
+    
+    #### AQI Categories:
+    - **0-50**: Good 
+    - **51-99**: Moderate 
+    - **100-149**: Unhealthy for Sensitive Groups 
+    - **150-200**: Unhealthy 
+    - **201-297**: Very Unhealthy 
+    - **300-500**: Hazardous
+    """)
+
 
 # Country Selection
 selected_country = st.selectbox('Select Country:', countries)
